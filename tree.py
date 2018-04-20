@@ -11,6 +11,7 @@ class TreeNode(object):
         self.right = right
 
     def __len__(self):
+        t = self
         return TreeNode._length(t)
 
     @ staticmethod
@@ -23,6 +24,48 @@ class TreeNode(object):
     @staticmethod
     def print_value(t):
         print(t.data)
+
+
+class BSTNode(object):
+    """二叉排序树（binary search tree）"""
+    def __init__(self):
+        self._root = None
+
+    def is_empty(self):
+        return self._root is None
+
+    def search(self, data):
+        bt = self._root
+        if not bt:
+            self._root = TreeNode(data)
+        while bt:
+            entry = bt.data
+            if data < entry:
+                bt = bt.left
+            elif data > entry:
+                bt = bt.right
+            else:
+                return entry
+        return None
+
+    def insert(self, data):
+        bt = self._root
+        if not bt:
+            self._root = TreeNode(data)
+            return
+        while True:
+            entry = bt.data
+            if data < entry:
+                if bt.left is None:
+                    bt.left = TreeNode(data)
+                    return
+            elif data > entry:
+                if bt.right is None:
+                    bt.right = TreeNode(data)
+                    return
+            else:
+                return
+
 
 
 # 前序遍历
@@ -48,9 +91,16 @@ def postorder(t, fun=TreeNode.print_value):
     fun(t)
 # 层序遍历(宽度优先搜索)
 def levelorder(t, fun=TreeNode.print_value):
+    if not t:
+        return
     queue = [t]
     while queue:
-        now = t.pop()
+        now = queue.pop()
+        fun(now)
+        if now.left:
+            queue.append(now.left)
+        if now.right:
+            queue.append(now.right)
 
 
 

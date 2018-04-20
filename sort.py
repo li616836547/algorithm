@@ -34,7 +34,17 @@ def quick_sort(l, left, right):
     return l
 
 
-
+# 选择排序法
+def selection_sort(l):
+    for i in range(len(l)):
+        index = i
+        for j in range(i+1, len(l)):
+            if l[j] < l[index]:
+                index = j
+        q = l[i]
+        l[i] = l[index]
+        l[index] = q
+    return l
 
 
 
@@ -43,6 +53,6 @@ def quick_sort(l, left, right):
 
 # 主函数
 if __name__ == '__main__':
-    l = [1,3,6,3,3,2,45,2.5]
+    l = [1, 3, 6, 3, 3, 2, 45, 2.5]
     print(bubble(l))
     print(quick_sort(l, 0, len(l)-1))

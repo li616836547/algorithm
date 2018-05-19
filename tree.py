@@ -66,8 +66,6 @@ class BSTNode(object):
             else:
                 return
 
-
-
 # 前序遍历
 def preorder(t, fun=TreeNode.print_value):
     if t is None:
@@ -101,6 +99,8 @@ def levelorder(t, fun=TreeNode.print_value):
             queue.append(now.left)
         if now.right:
             queue.append(now.right)
+# 列表转化为完全二叉树
+
 
 
 

@@ -50,9 +50,9 @@ def selection_sort(l):
 
 
 
-
 # 主函数
 if __name__ == '__main__':
     l = [1, 3, 6, 3, 3, 2, 45, 2.5]
     print(bubble(l))
     print(quick_sort(l, 0, len(l)-1))
+    a = iter(i for i in range(10))
